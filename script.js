@@ -17,7 +17,7 @@ window.onload = async () => {
     section.innerHTML = '';
     await fetchData();
 
-    storeAllPokemon(allData);
+    await storeAllPokemon(allData);
 
     setAllData();
 
