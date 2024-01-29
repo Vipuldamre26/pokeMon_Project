@@ -25,6 +25,10 @@ window.onload = async () => {
 
 
 
+
+
+// storing all data 
+
 async function fetchData() {
 
     for (let i = 1; i <= 151; i++) {
@@ -47,7 +51,7 @@ async function fetchData() {
 
 
 
-// storing all data 
+// storing all types data 
 
 async function storeAllPokemon(allData) {
 
@@ -71,6 +75,8 @@ async function storeAllPokemon(allData) {
 
 
 
+
+// after loading website all data will shows 
 
 function setAllData() {
     section.innerHTML = ''
@@ -173,12 +179,107 @@ function fetchPokemon() {
     if (section.innerHTML == '') {
         let p = document.createElement('p');
         p.innerHTML = 'Opps, this type has not found!!!!!';
+        p.style.display = 'block';
+        p.style.width = '100%';
+        p.style.margin = '1rem';
+        p.style.textAlign = 'center'
         let pp = document.createElement('p');
+        pp.style.width = '100%';
+        pp.style.textAlign = 'center'
         pp.innerHTML = 'You can try another types';
         section.append(p, pp);
     }
 
 }
+
+
+
+
+
+
+
+// by using searching option 
+
+search.addEventListener('click', searchPok);
+
+document.addEventListener('keyup', (key) => {
+    if(key.code == 'Enter'){
+        searchPok();
+    }
+})
+
+function searchPok(){
+
+    section.innerHTML = '';
+
+    let query = input.value;
+    console.log(query);
+
+    for (let i = 0; i < allData.length; i++) {
+
+        let item = allData[i];
+
+        if (query == item.pokType || query == item.name) {
+            console.log('Ok');
+            console.log(item.pokType);
+
+            let cardMain = document.createElement('div');
+            let card = document.createElement('div');
+            let backcard = document.createElement('div');
+            let type = document.createElement('span');
+
+            cardMain.classList.add('cardmain');
+            card.classList.add('card');
+            backcard.classList.add('backcard');
+            type.classList.add('span');
+
+            type.innerHTML = item.pokType;
+
+            let img = document.createElement('img');
+            img.setAttribute('src', item.pokImg);
+
+            let p = document.createElement('p');
+            p.innerHTML = item.name;
+
+            let div = document.createElement('div');
+            div.classList.add('backdiv');
+
+            let para = document.createElement('p');
+            para.innerHTML = `Abilities: `;
+            let para2 = document.createElement('p');
+            para2.innerHTML = `${item.Abilities}`
+
+            div.append(para, para2)
+            card.append(img, p, type);
+            backcard.append(div)
+            cardMain.append(card, backcard);
+
+            section.append(cardMain)
+        }
+    }
+
+    if (section.innerHTML == '') {
+        let p = document.createElement('p');
+        p.innerHTML = 'Opps, this type has not found!!!!!';
+        p.style.display = 'block';
+        p.style.width = '100%';
+        p.style.margin = '1rem';
+        p.style.textAlign = 'center'
+        p.style.fontSize = '2rem';
+        let pp = document.createElement('p');
+        pp.style.width = '100%';
+        pp.style.textAlign = 'center'
+        pp.style.fontSize = '2rem';
+
+        pp.innerHTML = 'You can try another types';
+        section.append(p, pp);
+    }
+
+
+    input.value = '';
+
+}
+
 
 
 
