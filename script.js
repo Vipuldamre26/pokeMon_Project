@@ -179,13 +179,16 @@ function fetchPokemon() {
     if (section.innerHTML == '') {
         let p = document.createElement('p');
         p.innerHTML = 'Opps, this type has not found!!!!!';
+        p.innerHTML = 'Opps, this type has not found!!!!!';
         p.style.display = 'block';
         p.style.width = '100%';
         p.style.margin = '1rem';
         p.style.textAlign = 'center'
+        p.style.fontSize = '2rem';
         let pp = document.createElement('p');
         pp.style.width = '100%';
         pp.style.textAlign = 'center'
+        pp.style.fontSize = '2rem';
         pp.innerHTML = 'You can try another types';
         section.append(p, pp);
     }
