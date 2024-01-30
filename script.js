@@ -80,6 +80,7 @@ async function storeAllPokemon(allData) {
 
 function setAllData() {
     section.innerHTML = ''
+    count = 1;
     for (let i = 0; i < allData.length; i++) {
         let item = allData[i];
         console.log(item);
@@ -87,9 +88,12 @@ function setAllData() {
         let card = document.createElement('div');
         let backcard = document.createElement('div');
         let type = document.createElement('span');
+        let countDiv = document.createElement('div');
+
 
         cardMain.classList.add('cardmain');
         card.classList.add('card');
+        countDiv.classList.add('countdiv');
         backcard.classList.add('backcard');
         type.classList.add('span');
 
@@ -97,6 +101,9 @@ function setAllData() {
 
         let img = document.createElement('img');
         img.setAttribute('src', item.pokImg);
+        img.style.marginTop = '2rem';
+
+        countDiv.innerHTML = `#${count}`;
 
         let p = document.createElement('p');
         p.innerHTML = item.name;
@@ -110,11 +117,13 @@ function setAllData() {
         para2.innerHTML = `${item.Abilities}`
 
         div.append(para, para2)
-        card.append(img, p, type);
+        card.append(countDiv, img, p, type);
         backcard.append(div)
         cardMain.append(card, backcard);
 
         section.append(cardMain)
+
+        count++;
 
     }
 }
@@ -131,6 +140,7 @@ function fetchPokemon() {
 
     const selectedType = document.querySelector('select').value;
     console.log(selectedType);
+    let count = 1;
 
     for (let i = 0; i < allData.length; i++) {
 
@@ -142,37 +152,45 @@ function fetchPokemon() {
             console.log(selectedType);
 
             let cardMain = document.createElement('div');
-            let card = document.createElement('div');
-            let backcard = document.createElement('div');
-            let type = document.createElement('span');
+        let card = document.createElement('div');
+        let backcard = document.createElement('div');
+        let type = document.createElement('span');
+        let countDiv = document.createElement('div');
 
-            cardMain.classList.add('cardmain');
-            card.classList.add('card');
-            backcard.classList.add('backcard');
-            type.classList.add('span');
 
-            type.innerHTML = item.pokType;
+        cardMain.classList.add('cardmain');
+        card.classList.add('card');
+        countDiv.classList.add('countdiv');
+        backcard.classList.add('backcard');
+        type.classList.add('span');
 
-            let img = document.createElement('img');
-            img.setAttribute('src', item.pokImg);
+        type.innerHTML = item.pokType;
 
-            let p = document.createElement('p');
-            p.innerHTML = item.name;
+        let img = document.createElement('img');
+        img.setAttribute('src', item.pokImg);
+        img.style.marginTop = '2rem';
 
-            let div = document.createElement('div');
-            div.classList.add('backdiv');
+        countDiv.innerHTML = `#${count}`;
 
-            let para = document.createElement('p');
-            para.innerHTML = `Abilities: `;
-            let para2 = document.createElement('p');
-            para2.innerHTML = `${item.Abilities}`
+        let p = document.createElement('p');
+        p.innerHTML = item.name;
 
-            div.append(para, para2)
-            card.append(img, p, type);
-            backcard.append(div)
-            cardMain.append(card, backcard);
+        let div = document.createElement('div');
+        div.classList.add('backdiv');
 
-            section.append(cardMain)
+        let para = document.createElement('p');
+        para.innerHTML = `Abilities: `;
+        let para2 = document.createElement('p');
+        para2.innerHTML = `${item.Abilities}`
+
+        div.append(para, para2)
+        card.append(countDiv, img, p, type);
+        backcard.append(div)
+        cardMain.append(card, backcard);
+
+        section.append(cardMain)
+
+        count++;
         }
     }
 
@@ -217,6 +235,7 @@ function searchPok(){
 
     let query = input.value;
     console.log(query);
+    let count = 1;
 
     for (let i = 0; i < allData.length; i++) {
 
@@ -227,37 +246,45 @@ function searchPok(){
             console.log(item.pokType);
 
             let cardMain = document.createElement('div');
-            let card = document.createElement('div');
-            let backcard = document.createElement('div');
-            let type = document.createElement('span');
+        let card = document.createElement('div');
+        let backcard = document.createElement('div');
+        let type = document.createElement('span');
+        let countDiv = document.createElement('div');
 
-            cardMain.classList.add('cardmain');
-            card.classList.add('card');
-            backcard.classList.add('backcard');
-            type.classList.add('span');
 
-            type.innerHTML = item.pokType;
+        cardMain.classList.add('cardmain');
+        card.classList.add('card');
+        countDiv.classList.add('countdiv');
+        backcard.classList.add('backcard');
+        type.classList.add('span');
 
-            let img = document.createElement('img');
-            img.setAttribute('src', item.pokImg);
+        type.innerHTML = item.pokType;
 
-            let p = document.createElement('p');
-            p.innerHTML = item.name;
+        let img = document.createElement('img');
+        img.setAttribute('src', item.pokImg);
+        img.style.marginTop = '2rem';
 
-            let div = document.createElement('div');
-            div.classList.add('backdiv');
+        countDiv.innerHTML = `#${count}`;
 
-            let para = document.createElement('p');
-            para.innerHTML = `Abilities: `;
-            let para2 = document.createElement('p');
-            para2.innerHTML = `${item.Abilities}`
+        let p = document.createElement('p');
+        p.innerHTML = item.name;
 
-            div.append(para, para2)
-            card.append(img, p, type);
-            backcard.append(div)
-            cardMain.append(card, backcard);
+        let div = document.createElement('div');
+        div.classList.add('backdiv');
 
-            section.append(cardMain)
+        let para = document.createElement('p');
+        para.innerHTML = `Abilities: `;
+        let para2 = document.createElement('p');
+        para2.innerHTML = `${item.Abilities}`
+
+        div.append(para, para2)
+        card.append(countDiv, img, p, type);
+        backcard.append(div)
+        cardMain.append(card, backcard);
+
+        section.append(cardMain)
+
+        count++;
         }
     }
 
